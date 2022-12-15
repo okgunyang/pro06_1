@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header id="header">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="/">MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">STORE</a></li>
+                    <li class="nav-item dropdown">
+                    	<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Product</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/product/detail(cate='A')}">A Category</a></li>
+                            <li><a class="dropdown-item" href="@{/product/detail(cate='B')}">B Category</a></li>
+                            <li><a class="dropdown-item" href="@{/product/detail(cate='C')}">C Category</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                    	<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">NEW&BEST</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/product/detail(sel='new')}">NEW</a></li>
+                            <li><a class="dropdown-item" href="@{/product/detail(sel='best')}">BEST</a></li>
+                            <li><a class="dropdown-item" href="@{/product/detail(sel='hot')}">HOT</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Community</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@{/board/list}">Notice</a></li>
+                            <li><a class="dropdown-item" href="@{/qna/list}">QnA</a></li>
+                            <li><a class="dropdown-item" href="@{/review/list}">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div th:fragment="tnb" id="tnb" class="collapse navbar-collapse">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+			    	<li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/signUp}">회원가입</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/info}">내정보</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="hasRole('ADMIN')" th:href="@{/member/admin}">어드민</a></li>
+				</ul>
+			</div>
+        </div>
+    </nav>
+</header>
+<hr>

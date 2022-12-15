@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>샘플 상세보기</title>
+	
+</head>
+<body>
+<div class="fluid-container">
+	
+	<div class="container">
+	<h2>샘플 상세보기</h2>
+		<table class="table">
+			<tbody th:object="${sample}">
+				<tr>
+					<th>아이디</th>
+					<td th:text="*{id}"></td>
+				</tr>
+				<tr>	
+					<th>비밀번호</th>
+					<td th:text="*{pw}"></td>
+				</tr>
+				<tr>
+					<th>조회수</th>
+					<td th:text="*{vcnt}"></td>
+				</tr>
+			</tbody>
+		</table>
+  	</div>
+</div>
+</body>
+</html>

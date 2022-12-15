@@ -1,0 +1,8 @@
+package com.shop2.myapp.dto;
+
+@Data
+public class SampleDTO {
+	private String id;
+	private String pw;
+	private long vcnt;
+}
