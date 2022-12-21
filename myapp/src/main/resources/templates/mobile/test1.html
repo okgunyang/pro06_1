@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>jQuery 모바일 웹 앱1</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+    .page_tit { font-size:5vw; clear:both; padding-bottom: 2rem; }
+    .ui-header .ui-title { text-align:right; }
+    </style>
+</head>
+<body class="ui-mobile-viewport ui-overlay-b">
+<div id="page0" data-role="page" class="ui-page ui-page-theme-a ui-page-active">
+    <header class="ui-header" data-role="header" data-theme="b">
+        <h2 class="ui-title">여기는 헤더</h2>
+    </header>
+    <div class="ui-content" data-role="content">
+        <h1 class="page_tit">여기는 메인 페이지 입니다.</h1>
+        <ul class="ui-list" data-role="listview">
+            <li><a href="#page1" data-transition="fade">페이지1</a></li>
+            <li><a href="#page2" data-transition="pop">페이지2</a></li>
+            <li><a href="#page3" data-transition="flip">페이지3</a></li>
+            <li><a href="#page4" data-transition="turn">페이지4</a></li>
+            <li><a href="#page1" data-transition="flow">페이지1</a></li>
+            <li><a href="#page2" data-transition="slidefade">페이지2</a></li>
+            <li><a href="#page3" data-transition="slide">페이지3</a></li>
+            <li><a href="#page4" data-transition="slideup">페이지4</a></li>
+            <li><a href="#page1" data-transition="slidedown">페이지1</a></li>
+            <li><a href="#page2" data-transition="none">페이지2</a></li>
+        </ul>
+    </div>
+    <footer class="ui-footer"data-role="footer" data-position="fixed">
+        <h2 class="ui-title">여기는 푸터</h2>
+    </footer>
+</div>
+<div id="page1" data-role="page" class="ui-page ui-page-theme-a">
+    <header data-role="header" class="ui-header" data-theme="b">
+        <a href="#page0" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Back To Page</a>
+        <h1 class="ui-title" role="heading">sub Page</h1>
+    </header>
+    <div data-role="content" role="sub" class="ui-content">
+        <p>여기는 서브 콘텐츠 입니다.</p>
+        <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+        <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지2</a>
+        <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지3</a>
+    </div>
+    <footer data-role="footer" class="ui-footer" data-theme="b" data-position="fixed">
+        <h3>여기는 푸터입니다.</h3>
+    </footer>
+</div>
+<div id="page2" data-role="page" class="ui-page ui-page-theme-a">
+    <header data-role="header" class="ui-header" data-theme="b">
+        <a href="#page1" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Back To Page</a>
+        <h1 class="ui-title" role="heading">sub Page2</h1>
+    </header>
+    <div data-role="content" role="sub" class="ui-content">
+        <p>여기는 서브 콘텐츠2 입니다.</p>
+        <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+        <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지1</a>
+        <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지2</a>
+        <a href="#page4" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지3</a>
+    </div>
+    <footer data-role="footer" class="ui-footer" data-theme="b" data-position="fixed">
+        <h3>여기는 푸터입니다.</h3>
+    </footer>
+</div>
+<div id="page3" data-role="page" class="ui-page ui-page-theme-a">
+    <header data-role="header" class="ui-header" data-theme="b">
+        <a href="#page2" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Back To Page</a>
+        <h1 class="ui-title" role="heading">sub Page3</h1>
+    </header>
+    <div data-role="content" role="sub" class="ui-content">
+        <p>여기는 서브 콘텐츠3 입니다.</p>
+        <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+        <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지1</a>
+        <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지2</a>
+        <a href="#page4" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지4</a>
+    </div>
+    <footer data-role="footer" class="ui-footer" data-theme="b" data-position="fixed">
+        <h3>여기는 푸터입니다.</h3>
+    </footer>
+</div>
+<div id="page4" data-role="page" class="ui-page ui-page-theme-a">
+    <header data-role="header" class="ui-header" data-theme="b">
+        <a href="#page3" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-left" data-role="button" role="button">Back To Page</a>
+        <h1 class="ui-title" role="heading">sub Page4</h1>
+    </header>
+    <div data-role="content" role="sub" class="ui-content">
+        <p>여기는 서브 콘텐츠4 입니다.</p>
+        <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+        <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지1</a>
+        <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지2</a>
+        <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지3</a>
+    </div>
+    <footer data-role="footer" class="ui-footer" data-theme="b" data-position="fixed">
+        <h3>여기는 푸터입니다.</h3>
+    </footer>
+</div>
+</body>
+</html>

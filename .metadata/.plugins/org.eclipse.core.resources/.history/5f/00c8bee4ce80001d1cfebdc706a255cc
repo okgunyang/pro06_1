@@ -1,0 +1,10 @@
+package com.shop2.myapp.util;
+
+public class AES256Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

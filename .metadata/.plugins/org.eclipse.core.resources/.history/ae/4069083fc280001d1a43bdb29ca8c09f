@@ -1,0 +1,5 @@
+package com.shop2.myapp.util;
+
+public class AES256 {
+
+}

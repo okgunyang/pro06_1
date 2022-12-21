@@ -31,13 +31,22 @@
                     </li>
                 </ul>
             </div>
+			    	<!-- <li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/signUp}">회원가입</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/info}">내정보</a></li>
+				    <li class="nav-item"><a class="nav-link" sec:authorize="hasRole('ADMIN')" th:href="@{/member/admin}">어드민</a></li> -->
 			<div th:fragment="tnb" id="tnb" class="collapse navbar-collapse">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-			    	<li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a></li>
-				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a></li>
-				    <li class="nav-item"><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/signUp}">회원가입</a></li>
-				    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/info}">내정보</a></li>
-				    <li class="nav-item"><a class="nav-link" sec:authorize="hasRole('ADMIN')" th:href="@{/member/admin}">어드민</a></li>
+			    	<li class="nav-item"><a class="nav-link" th:if="${sid == null}" th:href="@{/member/login}">로그인</a></li>
+				    <li class="nav-item"><a class="nav-link" th:if="${sid == null}" th:href="@{/member/signUp}">회원가입</a></li>
+				</ul>
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				    <li class="nav-item"><a class="nav-link" th:if="${sid != null}" th:href="@{/member/logout}">로그아웃</a></li>
+				    <li class="nav-item"><a class="nav-link" th:if="${sid != null}" th:href="@{/member/info}">내정보</a></li>
+				</ul>
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				    <li class="nav-item"><a class="nav-link" th:if="${sid == 'admin'}" th:href="@{/member/admin}">어드민</a></li>
 				</ul>
 			</div>
         </div>

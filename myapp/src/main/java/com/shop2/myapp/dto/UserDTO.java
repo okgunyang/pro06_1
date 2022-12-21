@@ -1,5 +1,17 @@
 package com.shop2.myapp.dto;
 
-public class UserDTO {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDTO {
+	private int idm;
+	private String id;
+	private String pw;
+	private String name;
+	private String email;
+	private String regdate;
 }
