@@ -8,5 +8,9 @@ public class AES256Test {
         System.out.println(text);
         System.out.println(cipherText);
         System.out.println(aes256.decrypt(cipherText));
+        
+        text = "1234";
+        cipherText = aes256.encrypt(text);
+        System.out.println(cipherText);
 	}
 }

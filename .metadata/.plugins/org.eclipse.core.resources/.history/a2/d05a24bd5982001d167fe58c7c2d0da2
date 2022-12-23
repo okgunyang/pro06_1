@@ -1,0 +1,23 @@
+//form데이터 전송
+function dataSubmit() {
+	//spring security를 활용하는 경우
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+ 
+    var data=new FormData($("#storeAddForm")[0]);
+ 
+ 	$(document).ajaxSend(function(event, xhr, options){
+		 xhr.setRequestHeader(header, token);
+	 });
+ 
+    $.ajax({
+        url: "/ajax/url.do",
+        data: data,
+        processData:false,
+        contentType:false,
+        enctype:'multipart/form-data',
+        type:"POST",
+    }).done(function (fragment) {
+        $("#resultDiv").replaceWith(fragment);
+    });
+}

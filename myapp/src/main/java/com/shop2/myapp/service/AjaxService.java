@@ -7,4 +7,5 @@ public interface AjaxService {
 	public List<UserDTO> userList() throws Exception;
 	public UserDTO getUser(String id) throws Exception;
 	public UserDTO getLogin(String id, String pw) throws Exception;
+	public void addUser(UserDTO user) throws Exception;
 }

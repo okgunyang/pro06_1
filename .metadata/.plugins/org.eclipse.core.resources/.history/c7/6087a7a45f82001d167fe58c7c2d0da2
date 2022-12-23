@@ -1,0 +1,17 @@
+//form데이터 전송
+function dataSubmit() { 
+    var data=new FormData($("#storeAddForm")[0]);
+ 
+    $.ajax({
+        url: "/ajax/url.do",
+        type: "POST",
+        data: data,
+        processData: false,
+        cache:false,
+        //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        enctype: 'multipart/form-data',
+        dataType:"json",
+    }).done(function (fragment) {
+        $("#resultDiv").replaceWith(fragment);
+    });
+}

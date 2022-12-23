@@ -26,7 +26,9 @@ CREATE TABLE product (
   name varchar(500) NOT NULL,
   price int NOT NULL,
   description varchar(2000) NOT NULL,
-  image_url varchar(200) NOT NULL,
+  image_url1 varchar(200),
+  image_url2 varchar(200),
+  image_url3 varchar(200),
   color varchar(200) NOT NULL,
   size varchar(200) NOT NULL,
   discount int NOT NULL,
@@ -36,6 +38,8 @@ CREATE TABLE product (
   PRIMARY KEY (id),
   CONSTRAINT product_FK FOREIGN KEY (category_id) REFERENCES category (id)
 );
+
+drop table product CASCADE;
 
 -- 장바구니 테이블 생성
 CREATE TABLE basket (

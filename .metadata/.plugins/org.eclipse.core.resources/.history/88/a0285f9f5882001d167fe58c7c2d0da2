@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<!-- templates/ajax/test5.html -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 89 : jQuery Ajax 데이터 송수신 처리5 - post</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script> 
+    <style>
+    .container { clear:both; width:1000px; margin:20px auto; line-height:2.8; } 
+    .container:after { content:""; display:block; clear:both; }
+    .data { clear: both; }
+    .data:after { content:""; display:block; clear:both; }
+    .table th { border-top:2px solid #333; }
+    .table td, .table th { border-bottom:2px solid #333; } 
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h2>jQuery Ajax 데이터 송수신 메소드 - ajax()</h2>
+        <article class="data">
+            <div><h2>AJAX Data Trans</h2></div>	 
+		    <div class="row border-bottom" style="margin-top: 10px; margin-bottom: 10px;"></div>
+		 
+		    <form id="addForm">
+		        <div style="display: inline;">
+		            <label for="img_upload" style="display:block; width:100px; height:42px; line-height:42px; cursor: pointer;">이미지 추가</label>
+		            <input type="file" name="img_upload" id="img_upload" onchange="previewImage(this,'View_area')" style="display: none;" multiple>
+		 
+		            <span id='View_area' style='position:relative; color: black; border: 0px solid black;'></span>
+		        </div>
+		 
+		        <div style="align-content: center; width: 100%; text-align: center;">
+		            <input type="button" class="btn" style="border:none; display:block; background: #FF6491; color: #FFF2F6;" onclick="dataSubmit();" value="전송하기">
+		        </div>
+		 
+		        <div id="resultDiv">
+		            <p th:text="${log}"></p>
+		        </div>
+		    </form>
+            <script src="/js/storeDataSendAjax.js"></script>
+		    <script src="/js/imagePreview.js"></script>
+        </article>
+    </section>
+    <br><hr><br>
+</body>
+</html>

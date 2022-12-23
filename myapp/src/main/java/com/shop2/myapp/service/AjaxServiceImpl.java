@@ -27,6 +27,12 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public UserDTO getLogin(String id, String pw) throws Exception {
 		return ajaxMapper.getLogin(id, pw);
+	}
+
+	@Override
+	public void addUser(UserDTO user) throws Exception {
+		ajaxMapper.addUser(user);
 	}	
+	
 	
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<!-- templates/ajax/test5.html -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 89 : jQuery Ajax 데이터 송수신 처리5 - post</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script> 
+    <style>
+    .container { clear:both; width:1000px; margin:20px auto; line-height:2.8; } 
+    .container:after { content:""; display:block; clear:both; }
+    .data { clear: both; }
+    .data:after { content:""; display:block; clear:both; }
+    .table th { border-top:2px solid #333; }
+    .table td, .table th { border-bottom:2px solid #333; }
+    #addBtn { display:block; width:100px; height:42px; line-height:42px; background:deepskyblue; cursor: pointer; margin-bottom:28px; text-align:center; color:#fff; }
+	#submitBtn, #proBtn { border:none; display:block; padding:8px; background:deeppink; color: #FFF2F6; cursor:pointer; margin:18px; float:left; text-decoration:none; box-sizing:border-box; font-size:14px; line-height:16px; }    
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h2>jQuery Ajax 데이터 송수신 메소드 - ajax()</h2>
+        <article class="data">
+            <div><h2>AJAX Data Trans</h2></div>	 
+		    <br><hr><br>		 
+		    <form id="addForm">
+		    	
+		        <div>
+		            <label for="img_upload" id="addBtn">이미지 추가</label>
+		            <input type="file" name="img_upload" id="img_upload" onchange="previewImage(this,'View_area')" style="display: none;" multiple>
+		            <span id='View_area' style='display:block; position:relative; color:black; border: 0px solid black;'></span>
+		        </div>
+		 
+		        <div>
+		            <input type="button" class="btn" id="submitBtn" onclick="dataSubmit();" value="전송하기"/>
+		            <a class="btn" id="proBtn" href="">이미지 업로드 완료</a>
+		        </div>
+		 		<br>
+		        <ul id="resultDiv">
+
+		        </ul>
+		        
+		        <div id="inputData">
+		        	
+		        </div>
+		    </form>
+            <script>
+			function dataSubmit() {
+				var maxSize = 10 * 1024 * 1024;
+				var sendData = "";
+				if ($('#img_upload')[0].files.length >= 4) {
+					alert("첨부 가능한 개수를 초과하였습니다. 3개 까지 첨부가 가능합니다.");
+				    return false;
+				}
+				for(var i in $('#img_upload')[0].files){
+					if ($('#img_upload')[0].files[i].size > maxSize) {
+						alert("첨부된 파일 중에 용량이 초과된 파일이 있습니다.\n이미지를 더블클릭하여 삭제 후 다시 선택하여 주시기 바랍니다.");
+					    return false;
+					}
+				}
+				
+				var form = $("#addForm")[0]; 
+			    var data = new FormData(form);
+			 
+			    $.ajax({
+			        url: "/ajax/url.do",
+			        type: "POST",
+			        enctype: 'multipart/form-data',
+			        data: data,
+			        processData: false,
+			        contentType: false,
+			        dataType:"json",
+			    }).done(function (qty) {
+					console.log(qty);
+					$.each(qty, function(index, value){
+						$("#resultDiv").append("<li>"+value+"</li>");
+						$("#inputData").append("<input type='hidden' name='imgSrc"+index+"' value='"+value+"'>");
+						sendData += "<input type='hidden' name='imgSrc"+index+"' value='"+value+"'>";	
+					});
+			    });
+			}
+            </script>
+		    <script src="/js/imageLoad.js"></script>
+        </article>
+    </section>
+    <br><hr><br>
+</body>
+</html>

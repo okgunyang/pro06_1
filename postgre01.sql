@@ -43,8 +43,16 @@ create table user1(idm int GENERATED ALWAYS as identity,
   name varchar(30), email varchar(40),
   regdate date default current_date);
 
+alter table user1 alter COLUMN pw TYPE varchar(300);
+
 -- 사용자 더미 데이터 추가
 insert into user1 values(default, 'kkt', '1234', '김기태', 'kkt@naver.com', default);
+
+select * from user1;
+
+update user1 set pw='EjirwAY9zs5/2VfMRE9fyA==' where id='kkt';
+
+commit;
 
 
 
