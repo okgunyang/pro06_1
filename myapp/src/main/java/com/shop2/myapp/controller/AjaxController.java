@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,9 +41,6 @@ public class AjaxController {
 	
 	@Resource
 	private AjaxService ajaxService;
-	
-	@Autowired
-	private HttpSession session;
 	
 	@GetMapping("test1")
 	public String testLoad(Model model) throws Exception {
@@ -98,13 +95,15 @@ public class AjaxController {
 	
 	@GetMapping("getLogin.do")
 	@ResponseBody
-	public UserDTO getLogin(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model) throws Exception {
+	public UserDTO getLogin(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model, HttpServletRequest request) throws Exception {
 		AES256 aes256 = new AES256();
 		pw = aes256.encrypt(pw);
+		HttpSession session = request.getSession();
 		UserDTO usr = ajaxService.getLogin(id, pw);
 		if(usr==null) {
 			session.invalidate();
 		} else {
+			session.setAttribute("loginUser", usr);
 			session.setAttribute("sid", usr.getId());
 			session.setAttribute("sname", usr.getName());
 		}
@@ -178,5 +177,12 @@ public class AjaxController {
 		user.setPw(aes256.encrypt(user.getPw()));
 		ajaxService.addUser(user);
 		return "ajax/test1";
+	}
+	
+	@GetMapping("logout.do")
+	public String logoutGET(HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    session.invalidate();
+	    return "ajax/test4";
 	}
 }
